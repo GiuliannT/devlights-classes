@@ -1,1 +1,1 @@
-### Devlights classes
+### Class 1

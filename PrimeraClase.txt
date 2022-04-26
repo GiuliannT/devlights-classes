@@ -1,0 +1,58 @@
+13/04/2022
+--------------------------------------------------------------------
+Profes: 
+
+Agustin Ramirez
+• mail: agustin.n.r.ramirez@gmail.com
+• ig: agustin.ar.ramirez
+
+Federico Loebarth
+• mail: federico.loebarth@devlights.com
+--------------------------------------------------------------------
+JS Overview - Truthy/Falsy Values
+
+Falsy Values:
+• false
+• 0
+• -0
+• 0n
+• ""
+• null
+• undefined
+• NaN
+
+Truthy Values: Todo aquel que no es falsy value
+--------------------------------------------------------------------
+Objects:
+• Properties
+• Key - Value
+
+Arrays:
+• Similar to List
+• Iterables
+• 0-index (empieza con [0])
+--------------------------------------------------------------------
+Create React App
+• Amazing tool for create our first React App
+• Community templates
+• You can create your own templates
+--------------------------------------------------------------------
+Webpack and npm/yarn
+
+Webpack:
+• Bundlers (Browserify, Parcel, etc)
+• From module with dependencies to a bundle with static assets
+
+npm or yarn:
+• Package managers
+• Define and run scripts
+• Install packages
+• Contain project metadata
+--------------------------------------------------------------------
+JSX
+• Main Syntax for React App
+• Developer Friendly
+• Sugar Syntax
+• More in common with JS that HTML
+• Is JS with superpowers! :D
+--------------------------------------------------------------------
