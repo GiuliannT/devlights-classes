@@ -2,11 +2,11 @@
 
 <h3>Visual Studio Overview</h3>
 <h3>JS Overview</h3>
-<h2>Variable declaration and scope</h2>
-<h2>Falsy and Truthy values</h2>
-<h2>Objects: Definition and useful methods</h2>
-<h2>Arrays: Definition and most used methods (map, filter, reduce)</h2>
-<h2>Async code: callbacks, promises and async/await</h2>
+<h4>Variable declaration and scope</h4>
+<h4>Falsy and Truthy values</h4>
+<h4>Objects: Definition and useful methods</h4>
+<h4>Arrays: Definition and most used methods (map, filter, reduce)</h4>
+<h4>Async code: callbacks, promises and async/await</h4>
 <h3>Webpack and npm/yarn</h3>
 <h3>First App: Create React App</h3>
 
