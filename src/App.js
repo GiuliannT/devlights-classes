@@ -1,20 +1,10 @@
-import { useState } from 'react';
-import { GreetingClass } from './components/GreetingClass/GreetingClass';
-import { GreetingFunction } from './components/GreetingFunction/GreetingFunction';
+import "./App.css";
+import { Login } from "./components/Login/Login";
 
-export const App = () => {
-
-  const [name, setName] = useState('test Function')
-  const changeName = () => {
-    name === 'test Function' && setName('Giulian');
-    name === 'Giulian' && setName('test Function')
-  }
-
+function App() {
   return (
-    <div className="App">
-      <GreetingClass name='test Class' />
-      <GreetingFunction name={name} />
-      <button onClick={changeName}>Change Name</button>
-    </div>
+    <Login />
   );
 }
+
+export default App;
