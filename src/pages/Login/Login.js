@@ -18,8 +18,12 @@ export function Login() {
         <LoginHero />
       </section>
       <section className="LoginFormContainer">
-        {isLogged === "true" ? <LoginFormSuccess /> : <LoginForm onSuccess={onSuccess} />}
+        {isLogged === "true" ? (
+          <LoginFormSuccess />
+        ) : (
+          <LoginForm onSuccess={onSuccess} />
+        )}
       </section>
     </main>
-  )
+  );
 }

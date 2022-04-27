@@ -16,16 +16,17 @@ export function LoginForm({ onSuccess }) {
     if (email === "test@test.com") {
       if (password === "test") {
         setError("");
+
         window.localStorage.setItem("isLogged", true);
+
         onSuccess();
-        return;
-      } else {
-        setError("Password incorrecto");
+
+        return ;
       }
-    } else {
-      window.localStorage.setItem("isLogged", false);
-      setError("Email Incorrecto");
     }
+
+    window.localStorage.setItem("isLogged", false);
+    setError("Datos Incorrectos");
   }
 
   function onEmailChange(event) {
@@ -46,14 +47,11 @@ export function LoginForm({ onSuccess }) {
         <label htmlFor="password" className="LoginFormInputLabel">Password</label>
         <input name="password" id="password" value={password} type="password" className="LoginFormInput" onChange={onPasswordChange} />
         <button className="LoginFormButton" onClick={handleClick}>Ingresar</button>
-        {/* {error.length > 0 ? (
+        {error.length > 0 ? (
           <div className="LoginFormError">
             {error}
           </div>
-        ) : null} */}
-        {
-          (!!(error.length)) && (<div className="LoginFormError">{error}</div>)
-        }
+        ) : null}
       </div>
     </div>
   )
