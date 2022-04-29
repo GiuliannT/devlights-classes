@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../../services/users";
+import { DashboardHeader } from "../DashboardHeader/DashboardHeader";
 import "./Dashboard.css";
 
 export function Dashboard() {
@@ -21,7 +22,7 @@ export function Dashboard() {
   return (
     <main className="Dashboard">
       <section className="DashboardContainer">
-        <h1>Dashboard</h1>
+      <DashboardHeader />
         <table>
           <thead>
             <tr>

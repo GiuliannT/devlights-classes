@@ -2,6 +2,7 @@ import landingImg from "./logo.png";
 import { useNavigate } from "react-router-dom";
 
 import "./Landing.css";
+import { LandingTitle } from "./LandingTitle";
 
 export function Landing() {
   const navigate = useNavigate();
@@ -14,6 +15,10 @@ export function Landing() {
         <img src={landingImg} alt="Landing Hero" />
         <h1>Devlights Bootcamp</h1>
         <h3>ReactJS</h3>
+
+        <LandingTitle prop1="Soy una prop">
+          Holaa soy children
+        </LandingTitle>
 
         <button onClick={onClick}>Login</button>
       </section>

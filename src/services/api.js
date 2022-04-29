@@ -3,6 +3,7 @@ import axios from "axios";
 export const API = axios.create({
   baseURL: "https://randomuser.me/",
   timeout: 5000,
+  // headers: { "X-Custom-Header": "foobar" },
 });
 
 // Add a request interceptor
