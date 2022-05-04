@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { DashboardContext } from "../../App";
 import { getUsers } from "../../services/users";
-import { DashboardHeader } from "../DashboardHeader/DashboardHeader";
+import DashboardHeader from "../DashboardHeader";
+import { UsersTable } from "../UsersTable/UsersTable";
 import "./Dashboard.css";
 
-export function Dashboard() {
+export const UsersContext = createContext();
+
+function Dashboard() {
   const [users, setUsers] = useState([]);
+  const { isLogged } = useContext(DashboardContext);
 
   async function getData() {
     try {
@@ -22,26 +27,16 @@ export function Dashboard() {
   return (
     <main className="Dashboard">
       <section className="DashboardContainer">
-      <DashboardHeader />
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(({ name, email, phone }, i) => (
-              <tr key={i}>
-                <th>{`${name.last} ${name.first}`}</th>
-                <th>{phone}</th>
-                <th>{email}</th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <UsersContext.Provider value={{
+          users
+        }}>
+          <DashboardHeader />
+          <p>isLogged: {String(isLogged)}</p>
+          <UsersTable />
+        </UsersContext.Provider>
       </section>
     </main>
   );
 }
+
+export default Dashboard;

@@ -1,6 +1,6 @@
 import "./NoMatch.css";
 
-export function NoMatch() {
+export default function NoMatch() {
   return (
     <main className="NoMatch">
       <section className="NoMatchContainer">
