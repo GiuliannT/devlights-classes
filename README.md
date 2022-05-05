@@ -1,1 +1,1 @@
-<h1>Class 6</h1>
+<h1>Class 7</h1>

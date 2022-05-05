@@ -1,14 +1,19 @@
+
 import { LoginForm } from "./LoginForm";
 import { LoginHero } from "./LoginHero";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
 
-export function Login({ onSuccess }) {
+import "./Login.css";
+import { useContext } from "react";
+import { DashboardContext } from "../../App";
+
+export default function Login() {
   const navigate = useNavigate();
+  const { onSuccess } = useContext(DashboardContext);
 
   function onLoginFormSuccess() {
-    navigate('/');
     onSuccess();
+    navigate("/");
   }
 
   return (
