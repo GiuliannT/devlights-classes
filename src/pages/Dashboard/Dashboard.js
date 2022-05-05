@@ -31,7 +31,7 @@ function Dashboard() {
           users
         }}>
           <DashboardHeader />
-          <p>isLogged: {String(isLogged)}</p>
+          {String(isLogged)}
           <UsersTable />
         </UsersContext.Provider>
       </section>
