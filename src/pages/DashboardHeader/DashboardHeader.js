@@ -1,16 +1,18 @@
-import { useContext } from "react";
-import { UsersContext } from "../Dashboard/Dashboard";
-import DashboardHeaderButton from "../DashboardHeaderButton";
+import { Avatar } from "../../components/Avatar";
+import { useUsers } from "../../hooks/useUsers";
 
 export default function DashboardHeader() {
-  const { users } = useContext(UsersContext);
+  const { data } = useUsers({});
 
-  console.log("users", users);
+  console.log("users", data);
 
   return (
-    <>
-      <DashboardHeaderButton />
-      <h1>Dashboard</h1>
-    </>
+    <header className="h-[70px] flex justify-between items-center">
+      <h1>Users List</h1>
+      <Avatar.Large />
+      <Avatar.Small />
+      <input className="bg-[#F8F9FA] rounded-md" />
+      <Avatar />
+    </header>
   )
 }

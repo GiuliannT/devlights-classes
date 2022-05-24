@@ -1,9 +1,11 @@
-import "./App.css";
-import { Landing, Login, NoMatch, Dashboard, Register } from "./pages";
+import { Landing, Login, NoMatch, Dashboard } from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { DashboardProvider } from "./contexts/DashboardContext";
+import { User } from "./pages/User/User";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export const DashboardContext = createContext();
+const queryClient = new QueryClient();
 
 function App() {
   const [isLogged, setIsLogged] = useState(
@@ -21,22 +23,37 @@ function App() {
 
   return (
     <BrowserRouter>
-      <DashboardContext.Provider
-        value={{
-          onLogout,
-          onSuccess,
-          isLogged,
-        }}
-      >
-        <Routes>
-          <Route path="/" element={isLogged ? <Dashboard /> : <Landing />} />
-          {isLogged ? null : <Route path="/login" element={<Login />} />}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/register" element={<Register />} />
-          {/* 404 not found / no match */}
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </DashboardContext.Provider>
+      <QueryClientProvider client={queryClient}>
+        <DashboardProvider
+          value={{
+            onLogout,
+            onSuccess,
+            isLogged,
+          }}
+        >
+          <Routes>
+            <Route path="/">
+              <Route
+                index
+                element={
+                  isLogged ? (
+                    <Dashboard>
+                      <Dashboard.Header />
+                      <Dashboard.Content />
+                    </Dashboard>
+                  ) : (
+                    <Landing />
+                  )
+                }
+              />
+              <Route path="user/:userId" element={<User />} />
+              {isLogged ? null : <Route path="login" element={<Login />} />}
+            </Route>
+            {/* 404 not found / no match */}
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </DashboardProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 }

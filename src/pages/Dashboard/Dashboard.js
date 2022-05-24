@@ -1,42 +1,23 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { DashboardContext } from "../../App";
-import { getUsers } from "../../services/users";
+import { DashboardContent } from "../DashboardContent/DashboardContent";
 import DashboardHeader from "../DashboardHeader";
-import { UsersTable } from "../UsersTable/UsersTable";
-import "./Dashboard.css";
 
-export const UsersContext = createContext();
-
-function Dashboard() {
-  const [users, setUsers] = useState([]);
-  const { isLogged } = useContext(DashboardContext);
-
-  async function getData() {
-    try {
-      const { results } = await getUsers();
-      setUsers(results);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+function Dashboard({ children }) {
   return (
-    <main className="Dashboard">
-      <section className="DashboardContainer">
-        <UsersContext.Provider value={{
-          users
-        }}>
-          <DashboardHeader />
-          {String(isLogged)}
-          <UsersTable />
-        </UsersContext.Provider>
-      </section>
+    <main className="flex h-screen">
+        <nav className="w-1/5 h-screen bg-[#383F51]">
+          <figure>logo</figure>
+          <ul>
+            <li>home</li>
+          </ul>
+        </nav>
+        <main className="w-4/5 h-screen">
+          {children}
+        </main>
     </main>
   );
 }
+
+Dashboard.Header = DashboardHeader;
+Dashboard.Content = DashboardContent;
 
 export default Dashboard;
