@@ -1,61 +1,20 @@
-import { Landing, Login, NoMatch, Dashboard } from "./pages";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { DashboardProvider } from "./contexts/DashboardContext";
-import { User } from "./pages/User/User";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
+import { Child } from "./Child";
 
-const queryClient = new QueryClient();
+export const App = () => {
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
 
-function App() {
-  const [isLogged, setIsLogged] = useState(
-    window.localStorage.getItem("isLogged") === "true"
-  );
+  const handleIncrementClick = () => dispatch({ type: "INCREMENT" });
 
-  function onSuccess() {
-    setIsLogged(true);
-  }
-
-  function onLogout() {
-    setIsLogged(false);
-    window.localStorage.removeItem("isLogged");
-  }
+  const handleDecrementClick = () => dispatch({ type: "DECREMENT" });
 
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <DashboardProvider
-          value={{
-            onLogout,
-            onSuccess,
-            isLogged,
-          }}
-        >
-          <Routes>
-            <Route path="/">
-              <Route
-                index
-                element={
-                  isLogged ? (
-                    <Dashboard>
-                      <Dashboard.Header />
-                      <Dashboard.Content />
-                    </Dashboard>
-                  ) : (
-                    <Landing />
-                  )
-                }
-              />
-              <Route path="user/:userId" element={<User />} />
-              {isLogged ? null : <Route path="login" element={<Login />} />}
-            </Route>
-            {/* 404 not found / no match */}
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
-        </DashboardProvider>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <div>
+      <h1>{count}</h1>
+      <button onClick={handleIncrementClick}>+</button>
+      <button onClick={handleDecrementClick}>-</button>
+      <Child />
+    </div>
   );
-}
-
-export default App;
+};
