@@ -1,20 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Child } from "./Child";
+import { Child2 } from "./Child2";
+import {
+  countSlice,
+  obtenerPokemonesAsync,
+  obtenerUsuariosAsync
+} from "./store";
+import "./styles.css";
 
-export const App = () => {
-  const count = useSelector((state) => state.count);
+export default function App() {
   const dispatch = useDispatch();
 
-  const handleIncrementClick = () => dispatch({ type: "INCREMENT" });
+  function handleAumentarClick() {
+    dispatch(countSlice.actions.incrementar());
+  }
 
-  const handleDecrementClick = () => dispatch({ type: "DECREMENT" });
+  function handleUsuariosClick() {
+    dispatch(obtenerUsuariosAsync());
+  }
+
+  function handlePokemonesClick() {
+    dispatch(obtenerPokemonesAsync());
+  }
 
   return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={handleIncrementClick}>+</button>
-      <button onClick={handleDecrementClick}>-</button>
+    <div className="App">
+      <h2>Start editing to see some magic happen!</h2>
+      <button onClick={handleAumentarClick}>Aumentar</button>
+      <button onClick={handleUsuariosClick}>Usuarios</button>
+      <button onClick={handlePokemonesClick}>Pokemones</button>
       <Child />
+      <Child2 />
     </div>
   );
-};
+}
